@@ -1,0 +1,20 @@
+void reverseStack(stack<int> &s) {
+    //logic: stack er sob kisu except 1 ta recursive e dibo cuz o sob ulta print kore dei. then ar ekta stack nibo or modhe 1st vhalu bad e baki sob stor hobe ar ager stack pop hobe . then ami 1st value ke push korbo ja 1st e store hoiye jabe 
+    //then ami abar loop chalabo ar stack er charecter onujay abar se reverse e print korbe jar fole ja chaysi tay pabo.
+    if(s.empty()) return;   /// jodi stack 1st ei empty hoi to stop
+    int x=s.top();//1st vhalu store korsi
+    s.pop();//pop kore rekhe disi
+    reverseStack(s);//1st vhalu bad e baki sob she reverse kore felse 5,4,3,2
+    stack<int>c;//new stack nisi
+    while(!s.empty())  // new er mode sob store korlam
+    {
+        c.push(s.top());
+        s.pop();
+    }
+    c.push(x); // top vhalu take push korlam ta top e store hoise ja holo 1
+     while(!c.empty())// then abar loop chalaylam sob ulta hoiye 5,4,3,2,1 hiye gelo
+    {
+        s.push(c.top());
+        c.pop();
+    }
+}
