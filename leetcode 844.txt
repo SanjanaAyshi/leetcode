@@ -1,0 +1,28 @@
+class Solution {
+public:
+    bool backspaceCompare(string s, string t) {
+        stack<char> ss,tt;//2 ta stack nibo cuz backspace bolse ja stack ke bujay p.s. LIFO
+        for(char c:s)// ek ek ta char nitesi
+        {
+            if(c=='#')// jodi # kopal e pore then enter
+            {
+                if(!ss.empty()) ss.pop();/// stack ta jodi empty hoi to ignor korbe but ami condition e disi jodi empty na hoi tahole pop korbe.
+            }
+            else{// or else push korbe
+                ss.push(c);
+            }
+        }
+        for(char c:t)// same goes for another stack
+        {
+            if(c=='#')
+            {
+                if(!tt.empty()) tt.pop();
+            }
+            else{
+                tt.push(c);
+            }
+        }
+        if(ss==tt) return true;// now 2 stack er vhalue same kina hoile true na hoile false.
+        else return false;
+    }
+};
