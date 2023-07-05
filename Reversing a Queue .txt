@@ -1,0 +1,19 @@
+#include <bits/stdc++.h> 
+queue<int> reverseQueue(queue<int> q)
+{
+    //logic: queue er vhalu ulta print korte hole amake stack nite hobe cuz o ulta store kore then oi stack ke queue te store korle queue abae jemon ase temon store kore i mean stack e jemon ase temon
+
+    stack<int>s;// new stack nisi cuz stack sob reversly store kore.
+    while(!q.empty())//queue theke sob stack e chichi ulta kore sore hocche 
+    {
+        s.push(q.front());
+        q.pop();
+    }
+      while(!s.empty())// stack theke abar queue te dici.. stack e jemon chilo temon abar queue te store hoche ja holo ulta
+    {
+        q.push(s.top());
+        s.pop();
+    }
+    return q; // ekhon queue takke return kore dilam.
+
+}
