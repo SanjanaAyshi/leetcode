@@ -1,0 +1,37 @@
+#include <bits/stdc++.h> 
+int getsum(stack<int>s)/// ekhane eta funtion creat korsi cuz amader sobgula stack sum kora lagbe babar na korar che funtion kora easy
+//ekhane ekta new stak nisi reference na cuz reference nile real taw change hoiye jay tay er por sum korlam.
+{
+    int sum=0;
+    while(!s.empty())
+    {
+        sum+=s.top();
+        s.pop();
+    }
+    return sum;
+}
+int maxSum(stack<int> &s1, stack<int> &s2, stack<int> &s3) {
+    int sum1=getsum(s1);//here we passed each stack to sum up
+    int sum2=getsum(s2);
+    int sum3=getsum(s3);
+    while(true)// loop chalay lam cuz amake 3 ta stack er sum e same kora lagbe tay
+    {
+        if(sum1==sum2 && sum2==sum3 && sum1==sum3) break;// jodi 3 stack er sum equal hoi then break korbe
+        else if (sum1>=sum2 && sum1>=sum3)//ekhon 1no stack boro hoi rest 3 tar theke then..
+        {
+            sum1-=s1.top();// top access korbe and oi top er vhalu sum theke delete hobe
+            s1.pop();// then oi top vhalue ta pop hoiye jabe stack theke.
+        }
+         else if (sum2>=sum1 && sum2>=sum3)
+        {
+            sum2-=s2.top();
+            s2.pop();
+        }
+         else 
+        {
+            sum3-=s3.top();
+            s3.pop();
+        }
+    }
+    return sum1;/// after all the etaretion jokhon sobar sum same hoiye gese then jekono ekta sum return korlei answer hoiye jay.
+}
