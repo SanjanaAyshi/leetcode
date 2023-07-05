@@ -1,0 +1,41 @@
+class Solution {
+public:
+
+    bool isValid(string s) {
+        stack<char> ss; // jekono stack nisi cuz bolse last check
+        for(char c:s)//for loop diye entry nisi nam disi 'c'
+        {
+            if(c=='(' || c=='{' || c=='[' ) ///condition set korlam
+            {
+                ss.push(c);// push kore dilam if it's true
+            }
+            else
+            {
+                if(ss.empty())// jodi stack age theke empty hoi to flase dekhabe 
+                {
+                    return false;
+                }
+                else{/// ar jodi empty na hoi then check korbe corespondinding sob ase ki na nicher if gula diyy
+                    if(c==')' && ss.top()=='(')//c-input nicche ar ss.top dekhtese oitar closer ase ki na ...jodi thake to pop kore ber kore dibo.
+                    {
+                        ss.pop();
+                    }
+                    else if(c==']' && ss.top()=='[')
+                    {
+                        ss.pop();
+                    }
+                    else if(c=='}' && ss.top()=='{')
+                    {
+                        ss.pop();
+                    }
+                    else{//jodi kono tar e closer na pai then false diye dibe
+                        return false;
+                    }
+                }
+            }
+        }
+        if(ss.empty()) return true;/// ses e ekta check stack ta khali ki na cuz goal holo stack khali tar mane sob thik na hoile thik nai.
+        else{return false;}
+    }
+};
+
